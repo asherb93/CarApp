@@ -50,13 +50,7 @@ public class GameManager {
         this.turn = turn;
     }
 
-    public int getLife() {
-        return life;
-    }
-
     public int getCurrentLife(){return currentLife;}
-
-    public void setCurrentLife(int currentLife){this.currentLife=currentLife;}
 
     public void setLife(int life) {
         this.life = life;
@@ -103,8 +97,6 @@ public class GameManager {
         Enemy newEnemy=new Enemy(cols);
         enemyArr.add(newEnemy);
         gameMat[newEnemy.getRow()][newEnemy.getCol()]=ENEMY_POS;
-
-        // updateMat();
         printBoard();
         return hitFlag;
 
@@ -129,30 +121,6 @@ public class GameManager {
         }
     }
 
-    public boolean iterateGame()
-    {
-        boolean hitFlag=false;
-        Enemy newEnemy=new Enemy(cols);
-        for(Enemy n:enemyArr)
-        {
-            if (n.getRow() == rows -1) {
-                if (gameMat[n.getRow()][n.getCol()] == HERO_POS) {
-                    hitFlag = true;
-                    if (currentLife > 0) {
-                        currentLife--;
-                    }
-                }
-
-            }
-            gameMat[n.getRow()][n.getCol()] = 0;
-            n.setRow(n.getRow() + 2);
-        }
-        enemyArr.add(newEnemy);
-        removeDeadEnemies();
-        //updateMat();
-        printBoard();
-        return hitFlag;
-    }
 
 
     public boolean updatePlayerOnMatRight(int i, int currentPosition)
@@ -215,13 +183,6 @@ public class GameManager {
 
     }
 
-    public void updateMat()
-    {
-        for(Enemy n:enemyArr)
-        {
-            gameMat[n.getRow()][n.getCol()]=ENEMY_POS;
-        }
-    }
 
     public void removeDeadEnemies()
     {

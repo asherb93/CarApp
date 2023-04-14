@@ -14,9 +14,6 @@ public class Enemy {
         return col;
     }
 
-    public void setCol(int col) {
-        this.col = col;
-    }
 
     public int getRow() {
         return row;
@@ -26,8 +23,4 @@ public class Enemy {
         this.row = row;
     }
 
-    public void printEnemy()
-    {
-        System.out.printf("my location is [%d][%d]\n",getRow(),getCol());
-    }
 }
