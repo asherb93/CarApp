@@ -21,13 +21,12 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int DELAY=1000;
-    private final int MAIN_CAR_NUMBER=3;
-    private final int ROWS=5;
-    private final int COLS=3;
-    private final int life=3;
+    private final int DELAY = 1000;
+    private final int MAIN_CAR_NUMBER = 3;
+    private final int ROWS = 5;
+    private final int COLS = 3;
+    private final int life = 3;
 
-    private MaterialButton[] main_BTN_control;
     private ShapeableImageView[] main_IMG_hearts;
     private ShapeableImageView[] main_IMG_Red_Car;
 
@@ -35,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     private int[][] gameMat;
 
-    private ExtendedFloatingActionButton right_Button;
-    private ExtendedFloatingActionButton left_Button;
-    GameManager gameManager=new GameManager(life,ROWS,COLS);
+    private MaterialButton right_Button;
+    private MaterialButton left_Button;
+    GameManager gameManager = new GameManager(life, ROWS, COLS);
 
     private final Handler handler = new Handler();
 
@@ -50,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,16 +58,30 @@ public class MainActivity extends AppCompatActivity {
         setDirectionClickListeners();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("App pause ");
+        handler.removeCallbacks(runnable);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        handler.removeCallbacks(runnable);
+        handler.postDelayed(runnable, DELAY);
+    }
+
+
     private void startGame() {
-        for(int i=0;i<ROWS-1;i++)
-        {
-            for(int j=0;j<COLS;j++) {
+        for (int i = 0; i < ROWS - 1; i++) {
+            for (int j = 0; j < COLS; j++) {
                 main_IMG_Enemies[i][j].setVisibility(View.INVISIBLE);
             }
         }
         main_IMG_Red_Car[0].setVisibility(View.INVISIBLE);
         main_IMG_Red_Car[2].setVisibility(View.INVISIBLE);
-        handler.postDelayed(runnable,DELAY);
+        handler.postDelayed(runnable, DELAY);
 
 
     }
@@ -78,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void findViews() {
 
-        main_IMG_Enemies=new ShapeableImageView[][]{
+        main_IMG_Enemies = new ShapeableImageView[][]{
                 {findViewById(R.id.ic_enemy1),
                         findViewById(R.id.ic_enemy2),
                         findViewById(R.id.ic_enemy3)},
@@ -88,29 +99,27 @@ public class MainActivity extends AppCompatActivity {
                 {findViewById(R.id.ic_enemy7),
                         findViewById(R.id.ic_enemy8),
                         findViewById(R.id.ic_enemy9)},
-                        { findViewById(R.id.ic_enemy10),
-                findViewById(R.id.ic_enemy11),
-                findViewById(R.id.ic_enemy12)}
+                {findViewById(R.id.ic_enemy10),
+                        findViewById(R.id.ic_enemy11),
+                        findViewById(R.id.ic_enemy12)}
 
 
-    };
+        };
 
-        main_IMG_hearts=new ShapeableImageView[]{
+        main_IMG_hearts = new ShapeableImageView[]{
                 findViewById(R.id.main_IMG_heart1),
                 findViewById(R.id.main_IMG_heart2),
                 findViewById(R.id.main_IMG_heart3),
         };
 
-        main_IMG_Red_Car=new ShapeableImageView[]{
+        main_IMG_Red_Car = new ShapeableImageView[]{
                 findViewById(R.id.car_pos_left),
                 findViewById(R.id.car_pos_center),
                 findViewById(R.id.car_pose_right),
         };
 
-        right_Button=findViewById(R.id.right_Button);
-        left_Button=findViewById(R.id.left_Button);
-
-
+        right_Button = findViewById(R.id.right_Button);
+        left_Button = findViewById(R.id.left_Button);
 
 
     }
@@ -121,30 +130,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void carGoLeft() {
-        int pos=gameManager.getCurrentPosition();
-        if(pos!=0){
-            for(int i=0;i<MAIN_CAR_NUMBER;i++)
-            {
+        int pos = gameManager.getCurrentPosition();
+        if (pos != 0) {
+            for (int i = 0; i < MAIN_CAR_NUMBER; i++) {
                 main_IMG_Red_Car[i].setVisibility(View.INVISIBLE);
             }
-            main_IMG_Red_Car[pos-1].setVisibility(View.VISIBLE);
-            gameManager.setCurrentPosition(pos-1);
-            gameManager.updatePlayerOnMatLeft(ROWS-1,gameManager.getCurrentPosition());
+            main_IMG_Red_Car[pos - 1].setVisibility(View.VISIBLE);
+            gameManager.setCurrentPosition(pos - 1);
+            gameManager.updatePlayerOnMatLeft(ROWS - 1, gameManager.getCurrentPosition());
         }
 
     }
 
     private void carGoRight() {
-        int pos=gameManager.getCurrentPosition();
+        int pos = gameManager.getCurrentPosition();
 
-        if(pos!=2){
-            for(int i=0;i<MAIN_CAR_NUMBER;i++)
-            {
+        if (pos != 2) {
+            for (int i = 0; i < MAIN_CAR_NUMBER; i++) {
                 main_IMG_Red_Car[i].setVisibility(View.INVISIBLE);
             }
-            main_IMG_Red_Car[pos+1].setVisibility(View.VISIBLE);
-            gameManager.setCurrentPosition(pos+1);
-            gameManager.updatePlayerOnMatRight(ROWS-1,gameManager.getCurrentPosition());
+            main_IMG_Red_Car[pos + 1].setVisibility(View.VISIBLE);
+            gameManager.setCurrentPosition(pos + 1);
+            gameManager.updatePlayerOnMatRight(ROWS - 1, gameManager.getCurrentPosition());
 
         }
 
@@ -153,28 +160,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void refreshUI() {
         int turn = gameManager.getTurn();
-        gameManager.printBoard();
-        boolean hit=gameManager.iterateGame();
+        boolean hit = gameManager.iterateGame();
         gameMat = gameManager.getGameMat();
-        for (int i = 0; i < ROWS-1; i++)
-        {
-            for(int j=0;j<COLS;j++)
-            {
-                if(gameMat[i][j]==1)
-                {
+        for (int i = 0; i < ROWS - 1; i++) {
+            for (int j = 0; j < COLS; j++) {
+                if (gameMat[i][j] == 1) {
                     main_IMG_Enemies[i][j].setVisibility(View.VISIBLE);
-                }
-                else
-                {
+                } else {
                     main_IMG_Enemies[i][j].setVisibility(View.INVISIBLE);
                 }
             }
         }
-        if(hit)
-        {
+        if (hit) {
             //System.out.println("number of lives:"+gameManager.getLife());
-            main_IMG_hearts[gameManager.getLife()].setVisibility(View.INVISIBLE);
-            Toast.makeText(this,"\uD83D\uDC80 Oof!",Toast.LENGTH_LONG).show();
+            main_IMG_hearts[gameManager.getCurrentLife()].setVisibility(View.INVISIBLE);
+            Toast.makeText(this, "\uD83D\uDC80 Crashed!", Toast.LENGTH_LONG).show();
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
@@ -184,8 +184,15 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        gameManager.setTurn(turn+1);
-        System.out.println(turn);
+
+        if (gameManager.isGameOver()) {
+            for (ShapeableImageView main_img_heart : main_IMG_hearts) {
+                main_img_heart.setVisibility(View.VISIBLE);
+            }
+
+        }
+
+        gameManager.setTurn(turn + 1);
 
 
     }

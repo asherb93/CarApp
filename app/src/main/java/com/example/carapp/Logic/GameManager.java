@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class GameManager {
 
 
-    private int hit;
     private int life;
+
+    private int currentLife;
     private int turn;
     private int rows;
     private int cols;
@@ -30,7 +31,8 @@ public class GameManager {
 
 
     public GameManager(int life, int rows, int cols) {
-        this.life = life;
+        setLife(life);
+        currentLife = life;
         this.rows=rows;
         this.cols=cols;
         currentCol=1;
@@ -51,6 +53,10 @@ public class GameManager {
     public int getLife() {
         return life;
     }
+
+    public int getCurrentLife(){return currentLife;}
+
+    public void setCurrentLife(int currentLife){this.currentLife=currentLife;}
 
     public void setLife(int life) {
         this.life = life;
@@ -77,8 +83,8 @@ public class GameManager {
             if (n.getRow() >= rows - 2) {
                 if (gameMat[n.getRow() + 1][n.getCol()] == HERO_POS) {
                     hitFlag = true;
-                    if (life > 0) {
-                        life--;
+                    if (currentLife > 0) {
+                        currentLife--;
                     }
                 }
 
@@ -87,12 +93,8 @@ public class GameManager {
             n.setRow(n.getRow() + 1);
         }
         enemyArr.add(newEnemy);
-        printBoard();
         removeDeadEnemies();
         updateMat();
-        printBoard();
-
-        printBoard();
         return hitFlag;
     }
 
@@ -108,6 +110,21 @@ public class GameManager {
     {
         gameMat[i][currentPosition]=HERO_POS;
         gameMat[i][currentPosition+1]=0;
+    }
+
+    public boolean isGameOver()
+    {
+        if(currentLife==0)
+        {
+            restartLives();
+            return true;
+        }
+        return false;
+    }
+
+    public void restartLives()
+    {
+        currentLife=life;
     }
 
     public void printBoard()
@@ -138,7 +155,6 @@ public class GameManager {
         for(int i=0;i<enemyArr.size();i++)
         {
             if (enemyArr.get(i).getRow() == rows-1 ) {
-                System.out.println("in");
                 gameMat[enemyArr.get(i).getRow()-1][enemyArr.get(i).getCol()]=0;
                 enemyArr.remove(enemyArr.get(i));
             }
