@@ -74,14 +74,69 @@ public class GameManager {
 
     private int currentCol;
 
+    public boolean iterateGameV2()
+    {
+        boolean hitFlag=false;
+
+        if(enemyArr.size()==rows) {
+            cleanHeroRow();
+        }
+
+        for(Enemy n:enemyArr)
+        {
+            gameMat[n.getRow()][n.getCol()] = 0;
+            n.setRow(n.getRow()+1);
+            if(gameMat[n.getRow()][n.getCol()]==HERO_POS)
+            {
+                hitFlag=true;
+                if (currentLife > 0) {
+                    currentLife--;
+                }
+
+            }
+            else
+            {
+                gameMat[n.getRow()][n.getCol()]=ENEMY_POS;
+            }
+        }
+
+        Enemy newEnemy=new Enemy(cols);
+        enemyArr.add(newEnemy);
+        gameMat[newEnemy.getRow()][newEnemy.getCol()]=ENEMY_POS;
+
+        // updateMat();
+        printBoard();
+        return hitFlag;
+
+
+
+
+
+
+    }
+
+    private void cleanHeroRow() {
+        enemyArr.remove(0);
+        for(int i=rows-1;i<rows;i++)
+        {
+            for(int j=0;j<cols;j++)
+            {
+                if(gameMat[i][j]==1)
+                {
+                    gameMat[i][j]=0;
+                }
+            }
+        }
+    }
+
     public boolean iterateGame()
     {
         boolean hitFlag=false;
         Enemy newEnemy=new Enemy(cols);
         for(Enemy n:enemyArr)
         {
-            if (n.getRow() >= rows - 2) {
-                if (gameMat[n.getRow() + 1][n.getCol()] == HERO_POS) {
+            if (n.getRow() == rows -1) {
+                if (gameMat[n.getRow()][n.getCol()] == HERO_POS) {
                     hitFlag = true;
                     if (currentLife > 0) {
                         currentLife--;
@@ -90,26 +145,48 @@ public class GameManager {
 
             }
             gameMat[n.getRow()][n.getCol()] = 0;
-            n.setRow(n.getRow() + 1);
+            n.setRow(n.getRow() + 2);
         }
         enemyArr.add(newEnemy);
         removeDeadEnemies();
-        updateMat();
+        //updateMat();
+        printBoard();
         return hitFlag;
     }
 
 
-    public void updatePlayerOnMatRight(int i, int currentPosition)
+    public boolean updatePlayerOnMatRight(int i, int currentPosition)
     {
+        boolean hitFlag=false;
+        if(gameMat[i][currentPosition]==ENEMY_POS)
+        {
+            if (currentLife > 0) {
+                currentLife--;
+            }
+            hitFlag=true;
+        }
         gameMat[i][currentPosition]=HERO_POS;
         gameMat[i][currentPosition-1]=0;
+        return hitFlag;
+
 
     }
 
-    public void updatePlayerOnMatLeft(int i, int currentPosition)
+    public boolean updatePlayerOnMatLeft(int i, int currentPosition)
     {
+        boolean hitFlag=false;
+        if(gameMat[i][currentPosition]==ENEMY_POS)
+        {
+            if (currentLife > 0) {
+                currentLife--;
+            }
+            hitFlag=true;
+        }
+
         gameMat[i][currentPosition]=HERO_POS;
         gameMat[i][currentPosition+1]=0;
+        return hitFlag;
+
     }
 
     public boolean isGameOver()
@@ -139,6 +216,9 @@ public class GameManager {
             System.out.println();
 
         }
+        System.out.println();
+        System.out.println();
+
     }
 
     public void updateMat()
@@ -155,7 +235,7 @@ public class GameManager {
         for(int i=0;i<enemyArr.size();i++)
         {
             if (enemyArr.get(i).getRow() == rows-1 ) {
-                gameMat[enemyArr.get(i).getRow()-1][enemyArr.get(i).getCol()]=0;
+                gameMat[enemyArr.get(i).getRow()][enemyArr.get(i).getCol()]=0;
                 enemyArr.remove(enemyArr.get(i));
             }
         }

@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ShapeableImageView[][] main_IMG_Enemies;
 
+    private ShapeableImageView[] main_IMG_Boom;
+
+
     private int[][] gameMat;
 
     private MaterialButton right_Button;
@@ -74,10 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void startGame() {
-        for (int i = 0; i < ROWS - 1; i++) {
+        for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 main_IMG_Enemies[i][j].setVisibility(View.INVISIBLE);
             }
+        }
+        for (int i = 0; i < main_IMG_Boom.length; i++) {
+            main_IMG_Boom[i].setVisibility(View.INVISIBLE);
         }
         main_IMG_Red_Car[0].setVisibility(View.INVISIBLE);
         main_IMG_Red_Car[2].setVisibility(View.INVISIBLE);
@@ -101,10 +107,19 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.ic_enemy9)},
                 {findViewById(R.id.ic_enemy10),
                         findViewById(R.id.ic_enemy11),
-                        findViewById(R.id.ic_enemy12)}
-
+                        findViewById(R.id.ic_enemy12)},
+                {findViewById(R.id.enemy_on_left_hero),
+                        findViewById(R.id.enemy_on_center_hero),
+                        findViewById(R.id.enemy_on_right_hero)}
 
         };
+
+        main_IMG_Boom = new ShapeableImageView[]{
+                findViewById(R.id.boom_left),
+                findViewById(R.id.boom_center),
+                findViewById(R.id.boom_right),
+        };
+
 
         main_IMG_hearts = new ShapeableImageView[]{
                 findViewById(R.id.main_IMG_heart1),
@@ -137,7 +152,24 @@ public class MainActivity extends AppCompatActivity {
             }
             main_IMG_Red_Car[pos - 1].setVisibility(View.VISIBLE);
             gameManager.setCurrentPosition(pos - 1);
-            gameManager.updatePlayerOnMatLeft(ROWS - 1, gameManager.getCurrentPosition());
+            if (gameManager.updatePlayerOnMatLeft(ROWS - 1, gameManager.getCurrentPosition())) {
+                main_IMG_Enemies[ROWS - 1][gameManager.getCurrentPosition()].setVisibility(View.INVISIBLE);
+                refreshUI();
+            }
+        }
+    }
+
+    private void carHit() {
+        main_IMG_hearts[gameManager.getCurrentLife()].setVisibility(View.INVISIBLE);
+        main_IMG_Boom[gameManager.getCurrentPosition()].setVisibility(View.VISIBLE);
+        main_IMG_Red_Car[gameManager.getCurrentPosition()].setVisibility(View.INVISIBLE);
+        Toast.makeText(this, "\uD83D\uDC80 Crashed!", Toast.LENGTH_LONG).show();
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v.vibrate(500);
         }
 
     }
@@ -151,7 +183,10 @@ public class MainActivity extends AppCompatActivity {
             }
             main_IMG_Red_Car[pos + 1].setVisibility(View.VISIBLE);
             gameManager.setCurrentPosition(pos + 1);
-            gameManager.updatePlayerOnMatRight(ROWS - 1, gameManager.getCurrentPosition());
+            if (gameManager.updatePlayerOnMatRight(ROWS - 1, gameManager.getCurrentPosition())) {
+                main_IMG_Enemies[ROWS - 1][gameManager.getCurrentPosition()].setVisibility(View.INVISIBLE);
+
+            }
 
         }
 
@@ -159,10 +194,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void refreshUI() {
+        main_IMG_Red_Car[gameManager.getCurrentPosition()].setVisibility(View.VISIBLE);
+        for (int i = 0; i < main_IMG_Boom.length; i++) {
+            main_IMG_Boom[i].setVisibility(View.INVISIBLE);
+        }
         int turn = gameManager.getTurn();
-        boolean hit = gameManager.iterateGame();
+        boolean hit = gameManager.iterateGameV2();
         gameMat = gameManager.getGameMat();
-        for (int i = 0; i < ROWS - 1; i++) {
+        for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 if (gameMat[i][j] == 1) {
                     main_IMG_Enemies[i][j].setVisibility(View.VISIBLE);
@@ -172,24 +211,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if (hit) {
-            //System.out.println("number of lives:"+gameManager.getLife());
-            main_IMG_hearts[gameManager.getCurrentLife()].setVisibility(View.INVISIBLE);
-            Toast.makeText(this, "\uD83D\uDC80 Crashed!", Toast.LENGTH_LONG).show();
-            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                //deprecated in API 26
-                v.vibrate(500);
-            }
-
+            carHit();
         }
 
         if (gameManager.isGameOver()) {
             for (ShapeableImageView main_img_heart : main_IMG_hearts) {
                 main_img_heart.setVisibility(View.VISIBLE);
             }
-
         }
 
         gameManager.setTurn(turn + 1);

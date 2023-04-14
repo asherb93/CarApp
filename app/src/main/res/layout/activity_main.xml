@@ -50,6 +50,34 @@
         android:columnCount="3"
         android:rowCount="5">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/boom_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_explosion" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/enemy_on_right_hero"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/car_pose_right"
@@ -63,6 +91,37 @@
             android:layout_margin="20dp"
             android:gravity="center"
             app:srcCompat="@drawable/ic_car" />
+
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/boom_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_explosion" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/enemy_on_center_hero"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/car_pos_center"
@@ -78,6 +137,34 @@
             android:gravity="center"
             app:srcCompat="@drawable/ic_car" />
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/boom_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_explosion" />
+
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/enemy_on_left_hero"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/car_pos_left"
