@@ -160,9 +160,6 @@ public class GameManager {
         boolean hitFlag=false;
         if(gameMat[i][currentPosition]==ENEMY_POS)
         {
-            if (currentLife > 0) {
-                currentLife--;
-            }
             hitFlag=true;
         }
         gameMat[i][currentPosition]=HERO_POS;
@@ -177,9 +174,6 @@ public class GameManager {
         boolean hitFlag=false;
         if(gameMat[i][currentPosition]==ENEMY_POS)
         {
-            if (currentLife > 0) {
-                currentLife--;
-            }
             hitFlag=true;
         }
 

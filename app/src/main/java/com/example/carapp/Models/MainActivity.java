@@ -154,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
             gameManager.setCurrentPosition(pos - 1);
             if (gameManager.updatePlayerOnMatLeft(ROWS - 1, gameManager.getCurrentPosition())) {
                 main_IMG_Enemies[ROWS - 1][gameManager.getCurrentPosition()].setVisibility(View.INVISIBLE);
-                refreshUI();
             }
         }
     }
@@ -185,9 +184,7 @@ public class MainActivity extends AppCompatActivity {
             gameManager.setCurrentPosition(pos + 1);
             if (gameManager.updatePlayerOnMatRight(ROWS - 1, gameManager.getCurrentPosition())) {
                 main_IMG_Enemies[ROWS - 1][gameManager.getCurrentPosition()].setVisibility(View.INVISIBLE);
-
             }
-
         }
 
     }
