@@ -8,12 +8,34 @@
     android:layoutDirection="ltr"
     tools:context=".Models.MainActivity">
 
-    <!--Hearts box-->
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/hearts_LAYOUT">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/score_LBL_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="SCORE:0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/hearts_LAYOUT"
         android:layout_width="150dp"
         android:layout_height="30dp"
-
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp">
 
@@ -37,6 +59,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_icon_heart" />
+
+
     </LinearLayout>
 
 
@@ -44,18 +68,19 @@
 
         android:id="@+id/main_GRIDLAYOUT"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="550dp"
         android:layout_below="@+id/hearts_LAYOUT"
         android:layout_centerInParent="true"
-        android:columnCount="3"
-        android:rowCount="5">
+        android:columnCount="5"
+        android:rowCount="7">
+
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/boom_right"
+            android:id="@+id/boom6_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
-            android:layout_rowWeight="1"
+            android:layout_row="6"
+            android:layout_rowWeight="0.5"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
@@ -65,11 +90,11 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/enemy_on_right_hero"
+            android:id="@+id/enemy6_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
-            android:layout_rowWeight="1"
+            android:layout_row="6"
+            android:layout_rowWeight="0.5"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
@@ -78,27 +103,28 @@
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
-
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/car_pose_right"
+            android:id="@+id/car6_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
+            android:layout_row="6"
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             app:srcCompat="@drawable/ic_car" />
 
-
-
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/boom_center"
+            android:id="@+id/boom6_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
+            android:layout_row="6"
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
@@ -108,12 +134,12 @@
             app:srcCompat="@drawable/ic_explosion" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/enemy_on_center_hero"
+            android:id="@+id/enemy6_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
+            android:layout_row="6"
             android:layout_rowWeight="1"
-            android:layout_column="1"
+            android:layout_column="3"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
@@ -122,26 +148,127 @@
             app:srcCompat="@drawable/ic_enemy" />
 
 
-
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/car_pos_center"
+            android:id="@+id/enemy6_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/boom6_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_explosion" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/car6_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_car" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/enemy6_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/boom6_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_explosion" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/car6_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_car" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/car6_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
 
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             app:srcCompat="@drawable/ic_car" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/boom_left"
+            android:id="@+id/boom6_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
+            android:layout_row="6"
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
@@ -151,12 +278,11 @@
             app:srcCompat="@drawable/ic_explosion" />
 
 
-
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/enemy_on_left_hero"
+            android:id="@+id/enemy6_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
+            android:layout_row="6"
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
@@ -167,22 +293,25 @@
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/car_pos_left"
+            android:id="@+id/car6_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_row="4"
+            android:layout_row="6"
             android:layout_rowWeight="1"
             android:layout_column="0"
-
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             app:srcCompat="@drawable/ic_car" />
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy1"
+            android:id="@+id/ic_enemy0_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="0"
@@ -192,11 +321,15 @@
             android:layout_gravity="fill_horizontal"
 
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy2"
+            android:id="@+id/ic_enemy0_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="0"
@@ -206,12 +339,16 @@
 
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy3"
+            android:id="@+id/ic_enemy0_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="0"
@@ -221,43 +358,52 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy4"
+            android:id="@+id/ic_enemy1_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
-
             android:layout_rowWeight="1"
             android:layout_column="0"
-
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy5"
+            android:id="@+id/ic_enemy1_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
-
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy6"
+            android:id="@+id/ic_enemy1_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
@@ -268,12 +414,16 @@
 
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy7"
+            android:id="@+id/ic_enemy2_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
 
@@ -283,12 +433,16 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy8"
+            android:id="@+id/ic_enemy2_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
 
@@ -298,12 +452,16 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy9"
+            android:id="@+id/ic_enemy2_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="2"
@@ -314,12 +472,16 @@
             android:layout_gravity="fill_horizontal"
 
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy10"
+            android:id="@+id/ic_enemy3_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="3"
@@ -329,13 +491,17 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
-            android:layout_weight="1"
+            android:layout_marginStart="20dp"
 
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy11"
+            android:id="@+id/ic_enemy3_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="3"
@@ -345,25 +511,929 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
-            android:layout_weight="1"
+            android:layout_marginStart="20dp"
 
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ic_enemy12"
+            android:id="@+id/ic_enemy3_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="3"
             android:layout_rowWeight="1"
-
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy0_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy1_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy2_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy3_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="3"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy0_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy1_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy2_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy3_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="3"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy5_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy5_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy5_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy5_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy5_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy4_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy4_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy4_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy4_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy4_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin0_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin0_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin0_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin0_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin0_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin0_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin1_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin1_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin1_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin1_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin1_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin2_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin2_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin2_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin2_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin2_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin3_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="3"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin3_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="3"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin3_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="3"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin3_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="3"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin3_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="3"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin4_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin4_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin4_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin4_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin4_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="4"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin5_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin5_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin5_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin5_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin5_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="5"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin6_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin6_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin6_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin6_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coin6_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_coin" />
+
+
+
+
 
     </GridLayout>
 
@@ -380,6 +1450,7 @@
             app:backgroundTint="@null"
             android:id="@+id/left_Button"
             android:layout_width="70dp"
+            android:contentDescription="3"
             android:layout_height="70dp"
             android:background="@drawable/button_arrow_left"
             android:textAlignment="center"
@@ -395,6 +1466,7 @@
             app:backgroundTint="@null"
             android:id="@+id/right_Button"
             android:layout_width="70dp"
+            android:contentDescription="3"
             android:background="@drawable/button_arrow_right"
             android:layout_height="70dp"
             android:textAlignment="center"

@@ -17,14 +17,15 @@ import com.example.carapp.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textview.MaterialTextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private final int DELAY = 1000;
-    private final int MAIN_CAR_NUMBER = 3;
-    private final int ROWS = 5;
-    private final int COLS = 3;
+    private final int MAIN_CAR_NUMBER = 5;
+    private final int ROWS = 7;
+    private final int COLS = 5;
     private final int life = 3;
 
     private ShapeableImageView[] main_IMG_hearts;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private ShapeableImageView[][] main_IMG_Enemies;
 
     private ShapeableImageView[] main_IMG_Boom;
+
+    private MaterialTextView scoreTextView;
 
 
     private int[][] gameMat;
@@ -85,8 +88,12 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < main_IMG_Boom.length; i++) {
             main_IMG_Boom[i].setVisibility(View.INVISIBLE);
         }
-        main_IMG_Red_Car[0].setVisibility(View.INVISIBLE);
-        main_IMG_Red_Car[2].setVisibility(View.INVISIBLE);
+        for(int i=0;i<main_IMG_Red_Car.length;i++)
+        {
+            if(i != COLS / 2) {
+                main_IMG_Red_Car[i].setVisibility(View.INVISIBLE);
+            }
+        }
         handler.postDelayed(runnable, DELAY);
 
 
@@ -96,28 +103,60 @@ public class MainActivity extends AppCompatActivity {
     private void findViews() {
 
         main_IMG_Enemies = new ShapeableImageView[][]{
-                {findViewById(R.id.ic_enemy1),
-                        findViewById(R.id.ic_enemy2),
-                        findViewById(R.id.ic_enemy3)},
-                {findViewById(R.id.ic_enemy4),
-                        findViewById(R.id.ic_enemy5),
-                        findViewById(R.id.ic_enemy6)},
-                {findViewById(R.id.ic_enemy7),
-                        findViewById(R.id.ic_enemy8),
-                        findViewById(R.id.ic_enemy9)},
-                {findViewById(R.id.ic_enemy10),
-                        findViewById(R.id.ic_enemy11),
-                        findViewById(R.id.ic_enemy12)},
-                {findViewById(R.id.enemy_on_left_hero),
-                        findViewById(R.id.enemy_on_center_hero),
-                        findViewById(R.id.enemy_on_right_hero)}
+                {findViewById(R.id.ic_enemy0_0),
+                        findViewById(R.id.ic_enemy0_1),
+                        findViewById(R.id.ic_enemy0_2),
+                        findViewById(R.id.ic_enemy0_3),
+                        findViewById(R.id.ic_enemy0_4)
+                },
+                {findViewById(R.id.ic_enemy1_0),
+                        findViewById(R.id.ic_enemy1_1),
+                        findViewById(R.id.ic_enemy1_2),
+                        findViewById(R.id.ic_enemy1_3),
+                        findViewById(R.id.ic_enemy1_4)
+                },
+                {findViewById(R.id.ic_enemy2_0),
+                        findViewById(R.id.ic_enemy2_1),
+                        findViewById(R.id.ic_enemy2_2),
+                        findViewById(R.id.ic_enemy2_3),
+                        findViewById(R.id.ic_enemy2_4)
+                },
+                {findViewById(R.id.ic_enemy3_0),
+                        findViewById(R.id.ic_enemy3_1),
+                        findViewById(R.id.ic_enemy3_2),
+                        findViewById(R.id.ic_enemy3_3),
+                        findViewById(R.id.ic_enemy3_4)
+                },
+                {findViewById(R.id.ic_enemy4_0),
+                        findViewById(R.id.ic_enemy4_1),
+                        findViewById(R.id.ic_enemy4_2),
+                        findViewById(R.id.ic_enemy4_3),
+                        findViewById(R.id.ic_enemy4_4)
+                },
+                {findViewById(R.id.ic_enemy5_0),
+                        findViewById(R.id.ic_enemy5_1),
+                        findViewById(R.id.ic_enemy5_2),
+                        findViewById(R.id.ic_enemy5_3),
+                        findViewById(R.id.ic_enemy5_4)
+                },
+
+                {findViewById(R.id.enemy6_0),
+                        findViewById(R.id.enemy6_1),
+                        findViewById(R.id.enemy6_2),
+                        findViewById(R.id.enemy6_3),
+                        findViewById(R.id.enemy6_4)
+                },
+
 
         };
 
         main_IMG_Boom = new ShapeableImageView[]{
-                findViewById(R.id.boom_left),
-                findViewById(R.id.boom_center),
-                findViewById(R.id.boom_right),
+                findViewById(R.id.boom6_0),
+                findViewById(R.id.boom6_1),
+                findViewById(R.id.boom6_2),
+                findViewById(R.id.boom6_3),
+                findViewById(R.id.boom6_4),
+
         };
 
 
@@ -128,13 +167,18 @@ public class MainActivity extends AppCompatActivity {
         };
 
         main_IMG_Red_Car = new ShapeableImageView[]{
-                findViewById(R.id.car_pos_left),
-                findViewById(R.id.car_pos_center),
-                findViewById(R.id.car_pose_right),
+                findViewById(R.id.car6_0),
+                findViewById(R.id.car6_1),
+                findViewById(R.id.car6_2),
+                findViewById(R.id.car6_3),
+                findViewById(R.id.car6_4),
+
         };
+        scoreTextView=findViewById(R.id.score_LBL_score);
 
         right_Button = findViewById(R.id.right_Button);
         left_Button = findViewById(R.id.left_Button);
+
 
 
     }
@@ -175,8 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void carGoRight() {
         int pos = gameManager.getCurrentPosition();
-
-        if (pos != 2) {
+        if (pos != COLS-1) {
             for (int i = 0; i < MAIN_CAR_NUMBER; i++) {
                 main_IMG_Red_Car[i].setVisibility(View.INVISIBLE);
             }
@@ -191,7 +234,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void refreshUI() {
-        main_IMG_Red_Car[gameManager.getCurrentPosition()].setVisibility(View.VISIBLE);
         for (int i = 0; i < main_IMG_Boom.length; i++) {
             main_IMG_Boom[i].setVisibility(View.INVISIBLE);
         }
@@ -216,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 main_img_heart.setVisibility(View.VISIBLE);
             }
         }
+        scoreTextView.setText("SCORE:"+gameManager.getScore());
 
         gameManager.setTurn(turn + 1);
 

@@ -12,13 +12,16 @@ public class GameManager {
     private int rows;
     private int cols;
 
+
     private ArrayList<Enemy> enemyArr=new ArrayList<>();
 
 
     private int[][] gameMat;
-    private final int HERO_POS=2;
 
+    private final int COIN_POS=3;
+    private final int HERO_POS=2;
     private final int ENEMY_POS=1;
+    private int score=0;
 
     public int[][] getGameMat() {
         return gameMat;
@@ -68,10 +71,14 @@ public class GameManager {
 
     private int currentCol;
 
+    public int getScore() {
+        return score;
+    }
+
     public boolean iterateGameV2()
     {
+        score++;
         boolean hitFlag=false;
-
         if(enemyArr.size()==rows) {
             cleanHeroRow();
         }
