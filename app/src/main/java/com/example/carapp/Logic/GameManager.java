@@ -1,5 +1,7 @@
 package com.example.carapp.Logic;
 
+import com.example.carapp.Utilities.SignalGenerator;
+
 import java.util.ArrayList;
 
 public class GameManager {
@@ -15,6 +17,7 @@ public class GameManager {
 
     private ArrayList<Enemy> enemyArr=new ArrayList<>();
 
+    private ArrayList<Coin> coinArr=new ArrayList<>();
 
     private int[][] gameMat;
 
@@ -22,6 +25,11 @@ public class GameManager {
     private final int HERO_POS=2;
     private final int ENEMY_POS=1;
     private int score=0;
+
+    private final int COIN_WEIGHT=10;
+
+
+    private final int enemyOrCoinOdds=5;
 
     public int[][] getGameMat() {
         return gameMat;
@@ -38,7 +46,7 @@ public class GameManager {
         currentLife = life;
         this.rows=rows;
         this.cols=cols;
-        currentCol=1;
+        currentCol=cols/2;
         turn=0;
         setGameMat(gameMat);
         gameMat[rows-1][cols/2]=HERO_POS;
@@ -75,11 +83,14 @@ public class GameManager {
         return score;
     }
 
-    public boolean iterateGameV2()
+    public int iterateGameV2()
     {
+
+        printBoard();
+
         score++;
-        boolean hitFlag=false;
-        if(enemyArr.size()==rows) {
+        int hitFlag=0;//if hitFlag=0 nothing happend,hitFlag=2 collision,hitFlag=3 picked coin
+        if(enemyArr.size()+coinArr.size()==rows) {
             cleanHeroRow();
         }
 
@@ -89,11 +100,10 @@ public class GameManager {
             n.setRow(n.getRow()+1);
             if(gameMat[n.getRow()][n.getCol()]==HERO_POS)
             {
-                hitFlag=true;
+                hitFlag=ENEMY_POS;
                 if (currentLife > 0) {
                     currentLife--;
                 }
-
             }
             else
             {
@@ -101,26 +111,60 @@ public class GameManager {
             }
         }
 
-        Enemy newEnemy=new Enemy(cols);
-        enemyArr.add(newEnemy);
-        gameMat[newEnemy.getRow()][newEnemy.getCol()]=ENEMY_POS;
-        printBoard();
+        for(Coin c:coinArr)
+        {
+            if(gameMat[c.getRow()][c.getCol()]!=ENEMY_POS) {
+                gameMat[c.getRow()][c.getCol()] = 0;
+            }
+            c.setRow(c.getRow()+1);
+            if(gameMat[c.getRow()][c.getCol()]==HERO_POS)
+            {
+                hitFlag=COIN_POS;
+                pickedCoin();
+            }
+            else
+            {
+                gameMat[c.getRow()][c.getCol()]=COIN_POS;
+            }
+
+        }
+
+
+        int coinOrEnemy=coinOrEnemyRand();
+        if(coinOrEnemy==enemyOrCoinOdds-1){
+            Coin newCoin=new Coin(cols);
+            coinArr.add(newCoin);
+            gameMat[newCoin.getRow()][newCoin.getCol()]=COIN_POS;
+        }
+        else {
+            Enemy newEnemy = new Enemy(cols);
+            enemyArr.add(newEnemy);
+            gameMat[newEnemy.getRow()][newEnemy.getCol()]=ENEMY_POS;
+        }
         return hitFlag;
-
-
-
 
 
 
     }
 
+    public int coinOrEnemyRand()
+    {
+        return (int) (Math.random() *((enemyOrCoinOdds-1) - 0 + 1));
+    }
+
     private void cleanHeroRow() {
-        enemyArr.remove(0);
+        if(enemyArr.isEmpty()==false&&enemyArr.get(0).getRow()==rows-1) {
+            enemyArr.remove(0);
+        }
+        else if(coinArr.isEmpty()==false&&coinArr.get(0).getRow()==rows-1)
+        {
+            coinArr.remove(0);
+        }
         for(int i=rows-1;i<rows;i++)
         {
             for(int j=0;j<cols;j++)
             {
-                if(gameMat[i][j]==1)
+                if(gameMat[i][j]==ENEMY_POS||gameMat[i][j]==COIN_POS)
                 {
                     gameMat[i][j]=0;
                 }
@@ -128,14 +172,29 @@ public class GameManager {
         }
     }
 
+    public int getENEMY_POS() {
+        return ENEMY_POS;
+    }
 
+    public int getCOIN_POS(){
+        return COIN_POS;
+    }
 
-    public boolean updatePlayerOnMatRight(int i, int currentPosition)
+    public void pickedCoin()
     {
-        boolean hitFlag=false;
+        score+=COIN_WEIGHT;
+    }
+    public int updatePlayerOnMatRight(int i, int currentPosition)
+    {
+        int hitFlag=0;
         if(gameMat[i][currentPosition]==ENEMY_POS)
         {
-            hitFlag=true;
+            hitFlag=ENEMY_POS;
+        }
+        else if(gameMat[i][currentPosition]==COIN_POS)
+        {
+            pickedCoin();
+            hitFlag=COIN_POS;
         }
         gameMat[i][currentPosition]=HERO_POS;
         gameMat[i][currentPosition-1]=0;
@@ -150,6 +209,10 @@ public class GameManager {
         if(gameMat[i][currentPosition]==ENEMY_POS)
         {
             hitFlag=true;
+        }
+        else if(gameMat[i][currentPosition]==COIN_POS)
+        {
+            score++;
         }
 
         gameMat[i][currentPosition]=HERO_POS;
@@ -175,6 +238,8 @@ public class GameManager {
 
     public void printBoard()
     {
+        System.out.println("current position"+getCurrentPosition());
+        System.out.println("----------------------");
         for(int i=0;i<rows;i++)
         {
             for(int j=0;j<cols;j++)
@@ -187,6 +252,7 @@ public class GameManager {
         }
         System.out.println();
         System.out.println();
+        System.out.println("----------------------");
 
     }
 

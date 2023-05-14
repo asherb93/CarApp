@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_road_background"
     android:layoutDirection="ltr"
-    tools:context=".Models.MainActivity">
+    tools:context=".MainActivity">
 
 
 
@@ -90,7 +90,7 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/enemy6_2"
+            android:id="@+id/ic_enemy6_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="6"
@@ -121,6 +121,20 @@
             app:srcCompat="@drawable/ic_car" />
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_enemy6_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_enemy" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/boom6_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -134,7 +148,7 @@
             app:srcCompat="@drawable/ic_explosion" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/enemy6_1"
+            android:id="@+id/ic_enemy6_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="6"
@@ -148,36 +162,7 @@
             app:srcCompat="@drawable/ic_enemy" />
 
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/enemy6_3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="6"
-            android:layout_rowWeight="1"
-            android:layout_column="3"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill_horizontal"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            app:srcCompat="@drawable/ic_enemy" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/boom6_3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="6"
-            android:layout_rowWeight="1"
-            android:layout_column="3"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill_horizontal"
-            android:layout_margin="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            app:srcCompat="@drawable/ic_explosion" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/car6_3"
@@ -198,7 +183,7 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/enemy6_4"
+            android:id="@+id/ic_enemy6_4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="6"
@@ -227,6 +212,24 @@
             android:layout_marginBottom="20dp"
             android:gravity="center"
             app:srcCompat="@drawable/ic_explosion" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/boom6_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="6"
+            android:layout_rowWeight="1"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_explosion" />
+
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/car6_4"
@@ -279,7 +282,7 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/enemy6_0"
+            android:id="@+id/ic_enemy6_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="6"
@@ -853,22 +856,6 @@
             android:gravity="center"
             app:srcCompat="@drawable/ic_enemy" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/coin0_0"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="0"
-            android:layout_rowWeight="1"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill_horizontal"
-            android:layout_margin="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            app:srcCompat="@drawable/ic_coin" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/coin0_0"
@@ -1471,6 +1458,8 @@
             android:layout_height="70dp"
             android:textAlignment="center"
              />
+
+
 
     </LinearLayout>
 
