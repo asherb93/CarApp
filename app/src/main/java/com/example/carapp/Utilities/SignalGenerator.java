@@ -42,4 +42,5 @@ public class SignalGenerator {
             vibrator.vibrate(length);
         }
     }
+
 }

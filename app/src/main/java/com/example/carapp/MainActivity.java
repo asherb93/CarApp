@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.carapp.Logic.GameManager;
 import com.example.carapp.R;
+import com.example.carapp.Utilities.DataManager;
 import com.example.carapp.Utilities.DirectionDetector;
 import com.example.carapp.Utilities.SignalGenerator;
 import com.example.carapp.interfaces.sensorCallback;
@@ -93,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        System.out.println("App pause ");
         handler.removeCallbacks(runnable);
         if(gameMode.equals("NoButtons")) {
             directionDetector.stop();

@@ -40,28 +40,26 @@
 
 
     <EditText
-        android:layout_below="@id/score_LBL_score"
         android:id="@+id/score_ETXT_name"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:text="Enter your name here"
+        android:layout_below="@id/score_LBL_score"
         android:layout_centerInParent="true"
         android:layout_marginTop="30dp"
 
-        />
+        android:text="Enter your name here" />
 
     <com.google.android.material.button.MaterialButton
-        android:layout_below="@id/score_ETXT_name"
         android:id="@+id/score_BTN_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="save your score"
+        android:layout_below="@id/score_ETXT_name"
         android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
 
-        android:textColor="@color/black"
         android:backgroundTint="#A7DA6E"
-        />
+        android:text="save your score"
+        android:textColor="@color/black" />
 
 
     <com.google.android.material.button.MaterialButton

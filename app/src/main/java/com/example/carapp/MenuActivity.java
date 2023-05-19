@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.example.carapp.Utilities.DataManager;
 import com.google.android.material.button.MaterialButton;
 
 public class MenuActivity extends AppCompatActivity {
@@ -14,9 +16,12 @@ public class MenuActivity extends AppCompatActivity {
     MaterialButton fastMB;
     MaterialButton sensorMB;
 
+    MaterialButton leaderMB;
+
     private final int slowSpeed=1000;
 
     private final int fastSpeed=500;
+
 
 
     @Override
@@ -25,6 +30,8 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         findViews();
         setOnClickListener();
+        DataManager.getInstance().loadJson();
+
     }
 
     public void findViews()
@@ -32,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
         slowMB=findViewById(R.id.btn_slow_Buttons);
         fastMB=findViewById(R.id.btn_fast_Buttons);
         sensorMB=findViewById(R.id.sensor_mode_BTN);
-
+        leaderMB=findViewById(R.id.menu_BTN_topTen);
     }
 
     public void setOnClickListener()
@@ -40,7 +47,14 @@ public class MenuActivity extends AppCompatActivity {
         slowMB.setOnClickListener(view -> startGame(slowSpeed,"Buttons"));
         fastMB.setOnClickListener(view -> startGame(fastSpeed,"Buttons"));
         sensorMB.setOnClickListener(view -> startGame(slowSpeed,"NoButtons"));
+        leaderMB.setOnClickListener(view->goToLeaderboard());
+    }
 
+    public void goToLeaderboard()
+    {
+        Intent leaderboardIntent=new Intent(this, ScoreboardActivity.class);
+        startActivity(leaderboardIntent);
+        finish();
     }
 
     public void startGame(int delay,String sensor){
