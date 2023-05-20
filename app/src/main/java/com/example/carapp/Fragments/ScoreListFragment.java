@@ -14,11 +14,17 @@ import com.example.carapp.Adapters.ScoreAdapter;
 import com.example.carapp.Logic.Score;
 import com.example.carapp.R;
 import com.example.carapp.Utilities.DataManager;
+import com.example.carapp.Utilities.SignalGenerator;
+import com.example.carapp.interfaces.MapCallback;
 import com.example.carapp.interfaces.ScoreCallback;
 
 public class ScoreListFragment extends Fragment {
 
     RecyclerView main_LST_scores;
+
+    private MapCallback mapCallback;
+    private ScoreCallback scoreCallBack;
+
 
 
 
@@ -37,11 +43,19 @@ public class ScoreListFragment extends Fragment {
     }
 
     private void initView() {
-        ScoreAdapter scoreAdapter=new ScoreAdapter(DataManager.getInstance().getScoresList().getScoreList());
+                ScoreAdapter scoreAdapter = new ScoreAdapter(DataManager.getInstance().getScoresList());
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        main_LST_scores.setLayoutManager(linearLayoutManager);
-        main_LST_scores.setAdapter(scoreAdapter);
+                linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+                main_LST_scores.setLayoutManager(linearLayoutManager);
+                main_LST_scores.setAdapter(scoreAdapter);
+                scoreAdapter.setScoreCallback(new ScoreCallback() {
+                    @Override
+                    public void getScore(Score score) {
+                        mapCallback.getScoreCoordinates(score.getLat(), score.getLag());
+
+                    }
+                });
 
     }
 
@@ -51,4 +65,12 @@ public class ScoreListFragment extends Fragment {
         main_LST_scores = view.findViewById(R.id.main_LST_movies);
     }
 
+
+    public void setMapCallback(MapCallback mapCallback) {
+        this.mapCallback=mapCallback;
+    }
+
+    public void setScoreCallback(ScoreCallback scoreCallback) {
+        this.scoreCallBack=scoreCallback;
+    }
 }

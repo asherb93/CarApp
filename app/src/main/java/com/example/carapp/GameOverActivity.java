@@ -18,6 +18,8 @@ import com.example.carapp.Utilities.MySp;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 public class GameOverActivity extends AppCompatActivity {
 
     final static String SCORE_KEY = "SCORE_KEY";
@@ -34,8 +36,6 @@ public class GameOverActivity extends AppCompatActivity {
     private MaterialButton mainMenuMB;
     private MediaPlayer mediaPlayerCrash;
     private EditText nameED;
-    private DataManager myDM;
-    private Score score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class GameOverActivity extends AppCompatActivity {
         findViews();
         scoreTV.setText("Score:"+userScore);
         setOnClickListeners();
+
 
     }
 
@@ -67,11 +68,13 @@ public class GameOverActivity extends AppCompatActivity {
     }
 
     private void saveScore() {
+        gps.sampleLocation(this);
         name=nameED.getText().toString();
         Score score= new Score().setUserName(name).setUserScore(userScore).setLag(gps.getLag()).setLat(gps.getLat());
+        //Score score= new Score().setUserName(name).setUserScore(userScore).setLag(31).setLat(31);
+
         DataManager.getInstance().addSorted(score);
         DataManager.getInstance().saveJson();
-        Log.d("to Json",DataManager.getInstance().getScoresList().getScoreList().toString());
 
     }
 

@@ -1,5 +1,7 @@
 package com.example.carapp.Logic;
 
+import com.example.carapp.Utilities.SignalGenerator;
+
 import java.util.ArrayList;
 
 public class ScoresList {
@@ -7,20 +9,14 @@ public class ScoresList {
     private ArrayList<Score> scoreList;
 
     public ScoresList() {
-        scoreList = new ArrayList<Score>();
+            scoreList = new ArrayList<>();
     }
 
-    public  void addScore(Score score) {
-        scoreList.add(score);
-    }
 
     public ArrayList<Score> getScoreList() {
-        return scoreList;
+            return scoreList;
     }
 
-    public void setScoreList(ArrayList<Score> scoreList) {
-        this.scoreList = scoreList;
-    }
 
     @Override
     public String toString() {

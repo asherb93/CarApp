@@ -17,7 +17,6 @@ public class App extends Application {
         super.onCreate();
         MySp.init(this);
         SignalGenerator.init(this);
-        DataManager.init();
-
+        DataManager.getInstance();
     }
 }

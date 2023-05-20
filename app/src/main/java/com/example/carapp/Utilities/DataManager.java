@@ -1,20 +1,14 @@
 package com.example.carapp.Utilities;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-
 import static com.example.carapp.Utilities.MySp.SP_FILE_NAME;
 
-import android.content.Context;
-import android.os.Vibrator;
+import android.util.Log;
 
 import com.example.carapp.Logic.Score;
 import com.example.carapp.Logic.ScoresList;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class DataManager {
 
@@ -24,21 +18,22 @@ public class DataManager {
 
     private static DataManager instance=null;
 
-    public DataManager( ) {
-        scoresList = new ScoresList();
-    }
 
 
 
     public static DataManager getInstance() {
+        if (instance == null) {
+            instance = new DataManager();
+            instance.loadJson();
+        }
         return instance;
     }
 
-    public static void init() {
-        if (instance == null) {
-            instance = new DataManager();
-        }
+
+    public DataManager( ) {
+        scoresList = new ScoresList();
     }
+
 
     public int getNUM_OF_TOP_SCORES() {
         return NUM_OF_TOP_SCORES;
@@ -51,25 +46,60 @@ public class DataManager {
         scoresList.getScoreList().sort((pl1, pl2) -> pl2.getUserScore() - pl1.getUserScore());
     }
 
-    public ScoresList getScoresList() {
-        return scoresList;
+    public ArrayList<Score> getScoresList() {
+        return scoresList.getScoreList();
     }
 
-    public void saveJson()
-    {
+
+
+
+//    public void saveJson() {
+//        Gson gson = new Gson();
+//        String json = gson.toJson(scoresList);
+//        Log.d("array list",scoresList.toString());
+//        Log.d("toJson",json);
+//
+//        MySp.getInstance().putString(SP_FILE_NAME,json);
+//    }
+
+//    public void loadJson() {
+//        ScoresList l = new ScoresList();
+//        String fromJsonTemp = MySp.getInstance().getPrefs().getString(SP_FILE_NAME, "");
+//        Log.d("fromJson",fromJsonTemp);
+//        if (fromJsonTemp != null && isJsonFileEmpty()) {
+//            Gson gson = new Gson();
+//            l = gson.fromJson(fromJsonTemp, ScoresList.class);
+//        }
+//
+//        scoresList = l;
+//    }
+
+    public void saveJson() {
         String scoreListTemp = new Gson().toJson(scoresList);
+
+        Log.d("saveJson",scoreListTemp);
+
         //my sp becomes null
-        MySp.getInstance().putString(SP_FILE_NAME,scoreListTemp);
+        MySp.getInstance().putString(SP_FILE_NAME, scoreListTemp);
     }
 
-    public void loadJson()
-    {
-       ScoresList l=new ScoresList();
-        String fromJsonTemp=MySp.getInstance().getPrefs().getString(SP_FILE_NAME,"");
-        if(!fromJsonTemp.isEmpty()){
-            Gson gson=new Gson();
-            l=new Gson().fromJson(fromJsonTemp,ScoresList.class);
+        public void loadJson() {
+        ScoresList l = new ScoresList();
+        String fromJsonTemp = MySp.getInstance().getPrefs().getString(SP_FILE_NAME, "");
+        Log.d("loadJson",fromJsonTemp);
+        Log.d("fromjsontemp",fromJsonTemp.isEmpty()+"");
+        if (!fromJsonTemp.isEmpty()) {
+            Gson gson = new Gson();
+            l = gson.fromJson(fromJsonTemp, ScoresList.class);
         }
-        scoresList=new Gson().fromJson(fromJsonTemp,ScoresList.class);
+        scoresList=l;
     }
+
+    public boolean isJsonFileEmpty() {
+        String json = MySp.getInstance().getPrefs().getString(SP_FILE_NAME, "");
+        return json.isEmpty();
+    }
+
+
+
 }

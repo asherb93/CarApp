@@ -29,10 +29,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback   {
     private GoogleMap mMap;
     private SupportMapFragment mapFragment;
 
-    private LocationManager locationManager;
-    private LocationListener locationListener;
-
-
 
     public MapFragment(){
 
@@ -43,21 +39,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback   {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_map, container, false);
+        findViews();
+        initViews();
+        return view;
+    }
+
+    public void findViews(){
         mapFragment = (SupportMapFragment)
                 getChildFragmentManager().findFragmentById(R.id.map_fragment);
+    }
+
+    public void initViews(){
         mapFragment.getMapAsync(this);
-
-
-        return view;
     }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        LatLng latlng=new LatLng(31.771959,35.217018);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng,12));
-
-
-
+        this.mMap = googleMap;
+        clickOnMap();
     }
 
 
@@ -86,9 +85,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback   {
             LatLng dest = new LatLng(latitude,longitude);
             markerOptions.position(dest);
             markerOptions.title(dest.latitude + " : " + dest.longitude);
-            mMap.clear(); // what
+            mMap.clear();
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                    dest,16f
+                    dest,18f
             ));
             mMap.addMarker(markerOptions);
         }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.carapp.Utilities.DataManager;
+import com.example.carapp.Utilities.SignalGenerator;
 import com.google.android.material.button.MaterialButton;
 
 public class MenuActivity extends AppCompatActivity {
@@ -30,7 +31,6 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         findViews();
         setOnClickListener();
-        DataManager.getInstance().loadJson();
 
     }
 
@@ -52,9 +52,9 @@ public class MenuActivity extends AppCompatActivity {
 
     public void goToLeaderboard()
     {
-        Intent leaderboardIntent=new Intent(this, ScoreboardActivity.class);
-        startActivity(leaderboardIntent);
-        finish();
+            Intent leaderboardIntent = new Intent(this, ScoreboardActivity.class);
+            startActivity(leaderboardIntent);
+            finish();
     }
 
     public void startGame(int delay,String sensor){

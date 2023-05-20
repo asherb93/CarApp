@@ -6,10 +6,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.carapp.Fragments.MapFragment;
 import com.example.carapp.Logic.Score;
 import com.example.carapp.R;
+import com.example.carapp.interfaces.MapCallback;
 import com.example.carapp.interfaces.ScoreCallback;
 
 import java.util.ArrayList;
@@ -20,8 +23,7 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoresViewHo
 
     public ScoreAdapter(ArrayList<Score> scoreArrayList){this.adapterScoreList=scoreArrayList;}
 
-    private ScoreCallback scoreCallback;
-
+    public MapCallback mapCallback;
 
 
     @NonNull
@@ -71,8 +73,22 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoresViewHo
                     scoreCallback.getScore(getItem(getAdapterPosition()));
             });
 
+
         }
     }
+
+    private ScoreCallback scoreCallback=new ScoreCallback() {
+        @Override
+        public void getScore(Score score) {
+            MapFragment mapFragment=new MapFragment();
+
+        }
+    };
+
+    private void setMapCallback(MapCallback mapCallback){
+        this.mapCallback=mapCallback;
+    }
+
 
 
 }
