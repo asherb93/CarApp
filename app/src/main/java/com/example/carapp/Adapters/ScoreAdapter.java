@@ -38,8 +38,8 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoresViewHo
     @Override
     public void onBindViewHolder(@NonNull ScoresViewHolder holder, int position) {
         Score score=getItem(position);
-        holder.scoreTV.setText(""+score.getUserScore());
-        holder.nameTV.setText(""+score.getUserName());
+        holder.scoreTV.setText("Score: "+score.getUserScore());
+        holder.nameTV.setText("Name: "+score.getUserName());
     }
 
 
@@ -64,7 +64,6 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoresViewHo
         private TextView scoreTV;
         public ScoresViewHolder(@NonNull View itemView) {
             super(itemView);
-            numberTV=itemView.findViewById(R.id.number_LBL);
             nameTV=itemView.findViewById(R.id.name_LBL);
             scoreTV=itemView.findViewById(R.id.score_LBL);
 

@@ -3,8 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/menu_background"
     tools:context=".MenuActivity">
 
+    <!-- Dark Tint Background -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#40000000" />
 
     <TextView
         android:id="@+id/menu_TXT_title"
@@ -14,7 +20,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:textSize="40sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:typeface="monospace"
+        android:textStyle="bold"
         />
     <TextView
         android:id="@+id/menu_TXT_title2"
@@ -42,8 +50,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:backgroundTint="#8BC34A"
+            android:backgroundTint="@color/mustard_yellow"
             android:text="SLOW MODE"
+
 
             />
 
@@ -52,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:backgroundTint="#8BC34A"
+            android:backgroundTint="@color/mustard_yellow"
             android:text="FAST MODE"
 
             />
@@ -75,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:backgroundTint="#8AC24A"
+            android:backgroundTint="@color/mustard_yellow"
             android:text="SENSOR MODE" />
 
 
@@ -91,7 +100,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
-        android:backgroundTint="#8BC34A"
+        android:backgroundTint="@color/mustard_yellow"
         android:text="Leaderboard" />
 
 </RelativeLayout>

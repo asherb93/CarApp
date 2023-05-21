@@ -15,6 +15,7 @@ import com.example.carapp.Logic.ScoresList;
 import com.example.carapp.Utilities.DataManager;
 import com.example.carapp.Utilities.GPS;
 import com.example.carapp.Utilities.MySp;
+import com.example.carapp.Utilities.SignalGenerator;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 
@@ -71,10 +72,9 @@ public class GameOverActivity extends AppCompatActivity {
         gps.sampleLocation(this);
         name=nameED.getText().toString();
         Score score= new Score().setUserName(name).setUserScore(userScore).setLag(gps.getLag()).setLat(gps.getLat());
-        //Score score= new Score().setUserName(name).setUserScore(userScore).setLag(31).setLat(31);
-
         DataManager.getInstance().addSorted(score);
         DataManager.getInstance().saveJson();
+        SignalGenerator.getInstance().toast("Score saved",3);
 
     }
 

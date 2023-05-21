@@ -44,6 +44,19 @@ public class DataManager {
     public void addSorted(Score score) {
         scoresList.getScoreList().add(score);
         scoresList.getScoreList().sort((pl1, pl2) -> pl2.getUserScore() - pl1.getUserScore());
+        if(scoresList.getScoreList().size()>NUM_OF_TOP_SCORES)
+        {
+            trimScoreList();
+        }
+    }
+
+    private void trimScoreList() {
+        int i=NUM_OF_TOP_SCORES;
+        while(scoresList.getScoreList().size()>NUM_OF_TOP_SCORES)
+        {
+            scoresList.getScoreList().remove(i);
+        }
+
     }
 
     public ArrayList<Score> getScoresList() {
@@ -51,28 +64,6 @@ public class DataManager {
     }
 
 
-
-
-//    public void saveJson() {
-//        Gson gson = new Gson();
-//        String json = gson.toJson(scoresList);
-//        Log.d("array list",scoresList.toString());
-//        Log.d("toJson",json);
-//
-//        MySp.getInstance().putString(SP_FILE_NAME,json);
-//    }
-
-//    public void loadJson() {
-//        ScoresList l = new ScoresList();
-//        String fromJsonTemp = MySp.getInstance().getPrefs().getString(SP_FILE_NAME, "");
-//        Log.d("fromJson",fromJsonTemp);
-//        if (fromJsonTemp != null && isJsonFileEmpty()) {
-//            Gson gson = new Gson();
-//            l = gson.fromJson(fromJsonTemp, ScoresList.class);
-//        }
-//
-//        scoresList = l;
-//    }
 
     public void saveJson() {
         String scoreListTemp = new Gson().toJson(scoresList);

@@ -52,9 +52,14 @@ public class MenuActivity extends AppCompatActivity {
 
     public void goToLeaderboard()
     {
-            Intent leaderboardIntent = new Intent(this, ScoreboardActivity.class);
-            startActivity(leaderboardIntent);
-            finish();
+            if(DataManager.getInstance().getScoresList().isEmpty()){
+                SignalGenerator.getInstance().toast("No scores to show yet",1);
+            }
+            else {
+                Intent leaderboardIntent = new Intent(this, ScoreboardActivity.class);
+                startActivity(leaderboardIntent);
+                finish();
+            }
     }
 
     public void startGame(int delay,String sensor){

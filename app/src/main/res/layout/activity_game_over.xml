@@ -8,12 +8,21 @@
     android:gravity="center"
     >
 
+
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/gameover_Background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/gameover_background" />
 
+    <!-- Dark Tint Background -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#90000000" />
 
     <TextView
         android:id="@+id/game_over_TV"
@@ -22,8 +31,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
         android:text="GAME OVER"
-        android:textColor="@color/black"
-        android:textSize="36dp" />
+        android:textColor="@color/mustard_yellow"
+        android:textSize="36dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/score_LBL_score"
@@ -33,10 +43,8 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="40dp"
         android:text="Score: "
-        android:textColor="@color/black"
-
-
-        android:textSize="24dp" />
+        android:textColor="@color/mustard_yellow"
+        android:textSize="36dp" />
 
 
     <EditText
@@ -46,8 +54,11 @@
         android:layout_below="@id/score_LBL_score"
         android:layout_centerInParent="true"
         android:layout_marginTop="30dp"
-
-        android:text="Enter your name here" />
+        android:hint="Enter your name here"
+        android:textAlignment="center"
+        android:textColorHint="@color/white"
+        android:textColor="@color/mustard_yellow"
+        android:textSize="20dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/score_BTN_save"
@@ -55,9 +66,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/score_ETXT_name"
         android:layout_centerInParent="true"
-        android:layout_marginTop="40dp"
 
-        android:backgroundTint="#A7DA6E"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/mustard_yellow"
         android:text="save your score"
         android:textColor="@color/black" />
 
@@ -69,8 +80,8 @@
         android:layout_below="@id/score_BTN_save"
         android:layout_centerInParent="true"
         android:layout_marginTop="40dp"
-        android:backgroundTint="#73AC34"
         android:text="Back to Menu"
+        android:backgroundTint="@color/mustard_yellow"
 
         android:textColor="@color/black"
         android:textSize="32dp" />
